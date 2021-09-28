@@ -1,0 +1,14 @@
+load("@rules_perl//perl:perl.bzl", "perl_binary")
+load("@rules_python//python:defs.bzl", "py_binary")
+
+perl_binary(
+    name = "perl",
+    srcs = ["perl.pl"],
+)
+
+py_binary(
+    name = "python",
+    srcs = ["python.py"],
+    data = [":perl"],
+    deps = ["@rules_python//python/runfiles"],
+)
